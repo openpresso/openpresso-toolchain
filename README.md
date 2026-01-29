@@ -18,4 +18,4 @@ cmake . --preset conan-release
 cmake --build . --preset conan-release
 ```
 
-Note that actual preset names depends on conanfile layout settings.
+Note that actual preset names depend on conanfile layout settings.
