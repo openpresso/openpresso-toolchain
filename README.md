@@ -12,7 +12,8 @@ Conan has two preconfigured profiles:
 ## Typical usage
 
 ```bash
-docker run -it -v .:/workspace -w /workspace ghcr.io/openpresso/openpresso-build-toolchain-armv8 bash
+docker run -it -v .:/workspace ghcr.io/openpresso/openpresso-build-toolchain-armv8 bash
+cd /workspace
 conan install . -pr:h=target -pr:b=default
 cmake . --preset conan-release
 cmake --build . --preset conan-release
