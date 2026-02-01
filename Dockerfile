@@ -27,3 +27,5 @@ RUN echo "[buildenv]" >> ${TARGET_PROFILE}
 RUN echo "CC=${TOOLCHAIN}-gcc" >> ${TARGET_PROFILE}
 RUN echo "CXX=${TOOLCHAIN}-g++" >> ${TARGET_PROFILE}
 RUN echo "LD=${TOOLCHAIN}-ld" >> ${TARGET_PROFILE}
+RUN echo "core:default_profile=target" >> /root/.conan2/global.conf
+RUN echo "core:default_build_profile=default" >> /root/.conan2/global.conf
