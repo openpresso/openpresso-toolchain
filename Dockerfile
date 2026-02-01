@@ -35,7 +35,4 @@ RUN echo "core:default_build_profile=default" >> /root/.conan2/global.conf
 ARG RUST_TARGET
 RUN rustup default stable
 RUN rustup target add $RUST_TARGET
-RUN mkdir /root/.cargo
-RUN echo "[build]" >> /root/.cargo/config.toml
-RUN echo "target = \"${RUST_TARGET}\"" >> /root/.cargo/config.toml
-ENV PATH="/root/.cargo/bin:${PATH}"
+ENV CARGO_BUILD_TARGET=$RUST_TARGET
