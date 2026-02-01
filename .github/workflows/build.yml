@@ -19,11 +19,13 @@ jobs:
             TOOLCHAIN: aarch64-linux-gnu
             CONAN_ARCH: armv8
             DEBIAN_ARCH: arm64
+            RUST_TARGET: aarch64-unknown-linux-gnu
 
           - target: armv6
             TOOLCHAIN: arm-linux-gnueabi
             CONAN_ARCH: armv6
             DEBIAN_ARCH: armel
+            RUST_TARGET: arm-unknown-linux-gnueabi
 
     steps:
       - name: Checkout
@@ -66,5 +68,6 @@ jobs:
             TOOLCHAIN=${{ matrix.TOOLCHAIN }}
             CONAN_ARCH=${{ matrix.CONAN_ARCH }}
             DEBIAN_ARCH=${{ matrix.DEBIAN_ARCH }}
+            RUST_TARGET=${{ matrix.RUST_TARGET }}
 
 

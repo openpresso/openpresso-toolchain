@@ -1,6 +1,7 @@
 ARG TOOLCHAIN
 ARG CONAN_ARCH
 ARG DEBIAN_ARCH
+ARG RUST_TARGET
 
 FROM debian:trixie-slim
 ENV DEBIAN_FRONTEND=noninteractive
@@ -29,3 +30,10 @@ RUN echo "CXX=${TOOLCHAIN}-g++" >> ${TARGET_PROFILE}
 RUN echo "LD=${TOOLCHAIN}-ld" >> ${TARGET_PROFILE}
 RUN echo "core:default_profile=target" >> /root/.conan2/global.conf
 RUN echo "core:default_build_profile=default" >> /root/.conan2/global.conf
+
+ARG RUST_TARGET
+RUN rustup default stable
+RUN rustup target add $RUST_TARGET
+RUN mkdir /root/.cargo
+RUN echo "[build]" >> /root/.cargo/config.toml
+RUN echo "target = \"${RUST_TARGET}\"" >> /root/.cargo/config.toml
