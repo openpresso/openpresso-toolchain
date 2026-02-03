@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=C.utf8
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends build-essential cmake 
+RUN apt-get install -y --no-install-recommends build-essential cmake ninja-build git
 ARG TOOLCHAIN
 ARG DEBIAN_ARCH
 RUN apt-get install -y --no-install-recommends gcc-${TOOLCHAIN} g++-${TOOLCHAIN} libc6-dev-${DEBIAN_ARCH}-cross linux-libc-dev-${DEBIAN_ARCH}-cross
