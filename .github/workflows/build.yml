@@ -26,7 +26,7 @@ jobs:
             DEBIAN_ARCH: armel
 
           - target: x86_64
-            TOOLCHAIN: x86_64-linux-gnu
+            TOOLCHAIN: x86-64-linux-gnu
             CONAN_ARCH: x86_64
             DEBIAN_ARCH: amd64
 
