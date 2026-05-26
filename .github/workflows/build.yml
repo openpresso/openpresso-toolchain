@@ -17,13 +17,21 @@ jobs:
         include:
           - target: armv8
             TOOLCHAIN: aarch64-linux-gnu
+            EXECUTABLE_PREFIX: aarch64-linux-gnu
             CONAN_ARCH: armv8
             DEBIAN_ARCH: arm64
 
           - target: armv6
             TOOLCHAIN: arm-linux-gnueabi
+            EXECUTABLE_PREFIX: arm-linux-gnueabi
             CONAN_ARCH: armv6
             DEBIAN_ARCH: armel
+
+          - target: x86_64
+            TOOLCHAIN: x86-64-linux-gnu
+            EXECUTABLE_PREFIX: x86_64-linux-gnu
+            CONAN_ARCH: x86_64
+            DEBIAN_ARCH: amd64
 
     steps:
       - name: Checkout
@@ -64,6 +72,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             TOOLCHAIN=${{ matrix.TOOLCHAIN }}
+            EXECUTABLE_PREFIX=${{ matrix.EXECUTABLE_PREFIX }}
             CONAN_ARCH=${{ matrix.CONAN_ARCH }}
             DEBIAN_ARCH=${{ matrix.DEBIAN_ARCH }}
 

@@ -1,4 +1,5 @@
 ARG TOOLCHAIN
+ARG EXECUTABLE_PREFIX
 ARG CONAN_ARCH
 ARG DEBIAN_ARCH
 
@@ -24,8 +25,9 @@ ENV TARGET_PROFILE=/root/.conan2/profiles/target
 ARG CONAN_ARCH
 RUN sed "s/^arch\=.*/arch=${CONAN_ARCH}/" /root/.conan2/profiles/default > ${TARGET_PROFILE}
 RUN echo "[buildenv]" >> ${TARGET_PROFILE}
-RUN echo "CC=${TOOLCHAIN}-gcc" >> ${TARGET_PROFILE}
-RUN echo "CXX=${TOOLCHAIN}-g++" >> ${TARGET_PROFILE}
-RUN echo "LD=${TOOLCHAIN}-ld" >> ${TARGET_PROFILE}
+ARG EXECUTABLE_PREFIX
+RUN echo "CC=${EXECUTABLE_PREFIX}-gcc" >> ${TARGET_PROFILE}
+RUN echo "CXX=${EXECUTABLE_PREFIX}-g++" >> ${TARGET_PROFILE}
+RUN echo "LD=${EXECUTABLE_PREFIX}-ld" >> ${TARGET_PROFILE}
 RUN echo "core:default_profile=target" >> /root/.conan2/global.conf
 RUN echo "core:default_build_profile=default" >> /root/.conan2/global.conf
