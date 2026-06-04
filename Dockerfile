@@ -13,6 +13,7 @@ ARG TOOLCHAIN
 ARG DEBIAN_ARCH
 RUN apt-get install -y --no-install-recommends gcc-${TOOLCHAIN} g++-${TOOLCHAIN} libc6-dev-${DEBIAN_ARCH}-cross linux-libc-dev-${DEBIAN_ARCH}-cross
 RUN apt-get install -y --no-install-recommends python3 python3-dev python3-pip python3-venv pkg-config
+RUN apt-get install -y --no-install-recommends pandoc
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="$PATH:/root/.local/bin"
